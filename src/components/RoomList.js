@@ -25,8 +25,9 @@ class RoomList extends Component {
     return(
       <div>
         {
+          /* The first parameter is an object. Second is its index */
           this.state.rooms.map((room, index) =>
-            <div key={ index }>Room Name: { room.name } Room Number: { index + 1 }</div>
+            <div key={ index }>Room Name: { room.name }</div>
           )
         }
       </div>
