@@ -22,6 +22,10 @@ class MessageList extends Component {
     });
   }
 
+  /*
+    Only displays the messages that have a property of roomId
+    that matches the chatroom's id.
+  */
   displayRoomMessage(message, index) {
     if(message.roomId === this.props.activeRoom) {
       return(
@@ -37,7 +41,6 @@ class MessageList extends Component {
       <div>
         {
           this.state.messages.map((message, index) =>
-            /*<p key={ message.roomId }>{ message.content }</p>*/
             this.displayRoomMessage(message, index)
           )
         }
