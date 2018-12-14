@@ -24,14 +24,15 @@ class RoomList extends Component {
 
   render() {
     return(
-      <div>
+      <nav className="container">
+        <h1>Bloc Chat</h1>
         {
           /* The first parameter is an object. Second is its index */
           this.state.rooms.map((room, index) =>
-            <div key={ index }>{ room.name }</div>
+            <div key={ index }><h3>{ room.name }</h3></div>
           )
         }
-      </div>
+      </nav>
     );
   }
 }
