@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../RoomList.css';
 
 class RoomList extends Component {
   constructor(props){
@@ -27,7 +28,7 @@ class RoomList extends Component {
         {
           /* The first parameter is an object. Second is its index */
           this.state.rooms.map((room, index) =>
-            <div key={ index }>Room Name: { room.name }</div>
+            <div key={ index }>{ room.name }</div>
           )
         }
       </div>
