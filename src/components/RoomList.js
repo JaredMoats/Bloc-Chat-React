@@ -24,6 +24,8 @@ class RoomList extends Component {
       const room = snapshot.val();
       room.key = snapshot.key;
 
+      console.log(`From componentDidMount in RoomList: room.key is: ${room.key}`);
+
       this.setState({ rooms: this.state.rooms.concat(room) });
     });
   }
@@ -63,11 +65,16 @@ class RoomList extends Component {
         <h1>Bloc Chat</h1>
         {
           /*
-            Display the available Rooms on the page. 
+            Display the available Rooms on the page.
             The first parameter is an object. Second is its index.
           */
           this.state.rooms.map((room, index) =>
-            <div key={ index }><h3>{ room.name }</h3></div>
+            <a
+              key={ room.key }
+              onClick={ this.props.setActiveRoom(room.key) }
+              href="#">
+              <h3>{ room.name }</h3>
+            </a>
           )
         }
         { /* This form creates a new room. */ }

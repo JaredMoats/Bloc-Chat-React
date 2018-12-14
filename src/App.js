@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
-import logo from './logo.svg';
+import MessageList from './components/MessageList';
 import './App.css';
 
 // Initialize Firebase
@@ -16,11 +16,34 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      activeRoom: ''
+    };
+  } //end of constructor
+
+  setActiveRoom(key) {
+    const newActiveRoom = key;
+
+    console.log(`From setActiveRoom(key) in App.js: the value of newActiveRoom is: ${newActiveRoom}`);
+
+    //this.setState({ activeRoom: newActiveRoom }); 
+  }
+
   render() {
     return (
       <div className="App">
-        <RoomList firebase={ firebase }/>
-        <div>Message component goes here</div>
+        <RoomList
+          firebase={ firebase }
+          activeRoom={ this.state.activeRoom }
+          setActiveRoom={ (key) => this.setActiveRoom(key) }
+        />
+        <MessageList
+          firebase={ firebase }
+          activeRoom={ this.state.activeRoom }
+        />
       </div>
     );
   }
