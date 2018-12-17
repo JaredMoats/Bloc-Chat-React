@@ -1,0 +1,18 @@
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.message {
+  list-style: none;
+  background-color: #FC5457;
+  margin: 5% 10% 0px 10%;
+  border-radius: 10px;
+}
+
+.message>p {
+  margin-left: 5%;
+  color: #FFFFFF;
+}

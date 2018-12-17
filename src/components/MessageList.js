@@ -30,16 +30,16 @@ class MessageList extends Component {
   displayRoomMessage(message, index) {
     if(message.roomId === this.props.activeRoom) {
       return(
-        <p key={ index }>{ message.content }</p>
+        <li key={ index } className="message"><p>{ message.content }</p></li>
       );
-    } else{
+    } else {
       return
     }
   }
 
   render() {
     return(
-      <div>
+      <div className="messages">
         {
           this.state.messages.map((message, index) =>
             this.displayRoomMessage(message, index)
