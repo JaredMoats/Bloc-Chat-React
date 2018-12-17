@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../RoomList.css';
+import '../css/RoomList.css';
 
 class RoomList extends Component {
   constructor(props){
@@ -75,13 +75,14 @@ class RoomList extends Component {
                           messages from the room they selected */
                       (key) => this.props.setActiveRoom(room.key)
                       }
-              href="#">
+              href="#"
+            >
               <h3>{ room.name }</h3>
             </a>
           )
         }
         { /* This form creates a new room. */ }
-        <form onSubmit={ (event) => this.createRoom(event) }>
+        <form className="newRoomForm" onSubmit={ (event) => this.createRoom(event) }>
           <label>
             Create a New Room:
           </label>

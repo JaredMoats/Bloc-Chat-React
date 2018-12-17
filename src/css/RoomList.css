@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #FC5457;
+  width: 15%;
+}
+
+.container>h1 {
+  color: #FFFFFF;
+}
+
+.container>a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.container>a:hover {
+  color: #C4C4C6;
+}
+
+.newRoomForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.newRoomForm>label {
+  margin-bottom: 10px;
+}
+
+.newRoomForm>input {
+  margin-bottom: 10px;
+}
