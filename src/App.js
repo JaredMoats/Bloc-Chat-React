@@ -30,10 +30,7 @@ class App extends Component {
   */
   setActiveRoom(key) {
     const newActiveRoom = key;
-
-    console.log(`From setActiveRoom(key) in App.js: the value of newActiveRoom is: ${newActiveRoom}`);
-
-    //this.setState({ activeRoom: newActiveRoom });
+    this.setState({ activeRoom: newActiveRoom });
   }
 
   render() {

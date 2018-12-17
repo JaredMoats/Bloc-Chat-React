@@ -71,7 +71,10 @@ class RoomList extends Component {
           this.state.rooms.map((room, index) =>
             <a
               key={ room.key }
-              onClick={ this.props.setActiveRoom(room.key) }
+              onClick={ /* The user can select the active room. They will only see
+                          messages from the room they selected */
+                      (key) => this.props.setActiveRoom(room.key)
+                      }
               href="#">
               <h3>{ room.name }</h3>
             </a>
