@@ -66,7 +66,7 @@ class RoomList extends Component {
           firebase={ this.props.firebase }
           user={ this.props.user }
           userName={ this.props.userName }
-          setUser={ (user, userName) => this.props.setUser(user, userName) }
+          setUser={ (user) => this.props.setUser(user) }
          />
         {
           /*

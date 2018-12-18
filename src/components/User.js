@@ -7,14 +7,14 @@ class User extends Component {
 
   componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged(user => {
-      const userName = user.displayName;
-      this.props.setUser(user, userName);
+      console.log(`From componentDidMount in User.js: The value of user is: ${user}`);
+        this.props.setUser(user);
     });
   }
 
   signIn() {
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithPopup(provider);
+    this.props.firebase.auth().signInWithRedirect(provider);
   }
 
   signOut() {

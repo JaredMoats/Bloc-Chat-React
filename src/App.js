@@ -22,7 +22,7 @@ class App extends Component {
     this.state = {
       activeRoom: '',
       activeRoomName: '',
-      user: null,
+      user: 'Guest',
       userName: 'testBlank'
     };
   } //end of constructor
@@ -38,10 +38,14 @@ class App extends Component {
     this.setState({ activeRoom: newActiveRoom, activeRoomName: newActiveRoomName });
   }
 
-  setUser(user, userName) {
+  setUser(user) {
     console.log(`setUser() triggered`);
-    this.setState({ user: user, userName: userName });
-    console.log(`${this.state.user.displayName}`);
+
+    if(user === null){
+      this.setState({ user: null, userName: 'Guest' });
+    } else {
+      this.setState({ user: user, userName: user.displayName });
+    }
   }
 
   render() {
