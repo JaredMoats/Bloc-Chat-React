@@ -64,7 +64,9 @@ class RoomList extends Component {
         <h1>Bloc Chat</h1>
         <User
           firebase={ this.props.firebase }
-          setUser={ (user) => this.props.setUser(user) }
+          user={ this.props.user }
+          userName={ this.props.userName }
+          setUser={ (user, userName) => this.props.setUser(user, userName) }
          />
         {
           /*

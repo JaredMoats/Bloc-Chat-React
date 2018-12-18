@@ -22,7 +22,8 @@ class App extends Component {
     this.state = {
       activeRoom: '',
       activeRoomName: '',
-      userName: ''
+      user: null,
+      userName: 'testBlank'
     };
   } //end of constructor
 
@@ -37,8 +38,10 @@ class App extends Component {
     this.setState({ activeRoom: newActiveRoom, activeRoomName: newActiveRoomName });
   }
 
-  setUser(user) {
-    console.log(`${user}`);
+  setUser(user, userName) {
+    console.log(`setUser() triggered`);
+    this.setState({ user: user, userName: userName });
+    console.log(`${this.state.user.displayName}`);
   }
 
   render() {
@@ -48,7 +51,9 @@ class App extends Component {
           firebase={ firebase }
           activeRoom={ this.state.activeRoom }
           setActiveRoom={ (key, name) => this.setActiveRoom(key, name) }
-          setUser={ (user) => this.setUser(user) }
+          setUser={ (user, userName) => this.setUser(user, userName) }
+          user={ this.state.user }
+          userName={ this.state.userName }
         />
         <MessageList
           firebase={ firebase }
