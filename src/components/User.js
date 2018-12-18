@@ -8,23 +8,39 @@ class User extends Component {
   componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged(user => {
       console.log(`From componentDidMount in User.js: The value of user is: ${user}`);
-        this.props.setUser(user);
+      this.props.setUser(user);
     });
   }
 
   signIn() {
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithRedirect(provider);
+    this.props.firebase.auth().signInWithPopup(provider);
+    /*this.props.firebase.auth().getRedirectResult().then(result => {
+      const user = result.user;
+      this.props.setUser(user);
+    });*/
   }
 
   signOut() {
     this.props.firebase.auth().signOut();
   }
 
+  displayGuest(user) {
+    if(user === null){
+      return(
+        <h3>Hi, Guest!</h3>
+      );
+    } else {
+      return(
+        <h3>Hi, { user.displayName }!</h3>
+      );
+    }
+  }
+
   render() {
     return(
       <div>
-        <h3>Active user: { this.props.userName }</h3>
+        <h3>{ this.displayGuest(this.props.user) }</h3>
         <button onClick={ () => this.signIn() }>Sign In</button>
         <button onClick={ () => this.signOut() }>Sign Out</button>
       </div>

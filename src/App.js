@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import './css/App.css';
 
 // Initialize Firebase
@@ -22,8 +23,7 @@ class App extends Component {
     this.state = {
       activeRoom: '',
       activeRoomName: '',
-      user: 'Guest',
-      userName: 'testBlank'
+      user: ''
     };
   } //end of constructor
 
@@ -41,23 +41,21 @@ class App extends Component {
   setUser(user) {
     console.log(`setUser() triggered`);
 
-    if(user === null){
-      this.setState({ user: null, userName: 'Guest' });
-    } else {
-      this.setState({ user: user, userName: user.displayName });
-    }
+      this.setState({ user: user });
   }
 
   render() {
     return (
       <div className="App">
+        <User
+          firebase={ firebase }
+          user={ this.state.user }
+          setUser={ (user) => this.setUser(user) }
+          />
         <RoomList
           firebase={ firebase }
           activeRoom={ this.state.activeRoom }
           setActiveRoom={ (key, name) => this.setActiveRoom(key, name) }
-          setUser={ (user, userName) => this.setUser(user, userName) }
-          user={ this.state.user }
-          userName={ this.state.userName }
         />
         <MessageList
           firebase={ firebase }
