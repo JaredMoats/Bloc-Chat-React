@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/User.css';
 
 class User extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class User extends Component {
 
   render() {
     return(
-      <div>
+      <div className="userNameContainer">
         <h3>{ this.displayGuest(this.props.user) }</h3>
         <button onClick={ () => this.signIn() }>Sign In</button>
         <button onClick={ () => this.signOut() }>Sign Out</button>

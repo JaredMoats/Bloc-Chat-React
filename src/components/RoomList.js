@@ -62,6 +62,12 @@ class RoomList extends Component {
     return(
       <nav className="container">
         <h1>Bloc Chat</h1>
+        <User
+          firebase={ this.props.firebase }
+          user={ this.props.user }
+          userName={ this.props.userName }
+          setUser={ (user) => this.props.setUser(user) }
+         />
         {
           /*
             Display the available Rooms on the page.
