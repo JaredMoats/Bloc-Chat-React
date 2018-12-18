@@ -20,7 +20,9 @@ class App extends Component {
     super();
 
     this.state = {
-      activeRoom: ''
+      activeRoom: '',
+      activeRoomName: '',
+      userName: ''
     };
   } //end of constructor
 
@@ -28,9 +30,15 @@ class App extends Component {
     Sets the new active room based on which room the user clicks.
     Passed as propr to RoomList.
   */
-  setActiveRoom(key) {
+  setActiveRoom(key, name) {
     const newActiveRoom = key;
-    this.setState({ activeRoom: newActiveRoom });
+    const newActiveRoomName = name;
+
+    this.setState({ activeRoom: newActiveRoom, activeRoomName: newActiveRoomName });
+  }
+
+  setUser(user) {
+    console.log(`${user}`);
   }
 
   render() {
@@ -39,11 +47,13 @@ class App extends Component {
         <RoomList
           firebase={ firebase }
           activeRoom={ this.state.activeRoom }
-          setActiveRoom={ (key) => this.setActiveRoom(key) }
+          setActiveRoom={ (key, name) => this.setActiveRoom(key, name) }
+          setUser={ (user) => this.setUser(user) }
         />
         <MessageList
           firebase={ firebase }
           activeRoom={ this.state.activeRoom }
+          activeRoomName={ this.state.activeRoomName }
         />
       </div>
     );

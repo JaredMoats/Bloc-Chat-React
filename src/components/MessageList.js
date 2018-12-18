@@ -17,8 +17,6 @@ class MessageList extends Component {
       const message = snapshot.val();
       message.key = snapshot.key;
 
-      console.log(`From compoentnDidMount in MessageList: message.key is: ${message.key}`);
-
       this.setState({ messages: this.state.messages.concat(message) });
     });
   }
@@ -40,6 +38,7 @@ class MessageList extends Component {
   render() {
     return(
       <div className="messages">
+        <h1>{ this.props.activeRoomName }</h1>
         {
           this.state.messages.map((message, index) =>
             this.displayRoomMessage(message, index)

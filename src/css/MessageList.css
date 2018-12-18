@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.messages>h1 {
+  margin-left: 10%;
+}
+
 .message {
   list-style: none;
   background-color: #FC5457;

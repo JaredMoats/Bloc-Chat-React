@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import User from './User';
 import '../css/RoomList.css';
 
 class RoomList extends Component {
@@ -23,8 +24,6 @@ class RoomList extends Component {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
       room.key = snapshot.key;
-
-      console.log(`From componentDidMount in RoomList: room.key is: ${room.key}`);
 
       this.setState({ rooms: this.state.rooms.concat(room) });
     });
@@ -63,6 +62,10 @@ class RoomList extends Component {
     return(
       <nav className="container">
         <h1>Bloc Chat</h1>
+        <User
+          firebase={ this.props.firebase }
+          setUser={ (user) => this.props.setUser(user) }
+         />
         {
           /*
             Display the available Rooms on the page.
@@ -73,7 +76,7 @@ class RoomList extends Component {
               key={ room.key }
               onClick={ /* The user can select the active room. They will only see
                           messages from the room they selected */
-                      (key) => this.props.setActiveRoom(room.key)
+                      (key, name) => this.props.setActiveRoom(room.key, room.name)
                       }
               href="#"
             >
