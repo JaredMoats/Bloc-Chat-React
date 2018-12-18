@@ -14,40 +14,7 @@ class User extends Component {
 
   signIn() {
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithPopup(provider).then(result => {
-      //The signed-in user info
-      const user = result.user;
-      const userName = user.displayName;
-
-      //this.props.setUser(user, userName);
-    }).catch(error => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      const email = error.email;
-      console.log(email);
-      const credential = error.credential;
-      console.log(credential);
-    });
-
-    /*this.props.firebase.auth().signInWithRedirect(provider);
-    this.props.firebase.auth().getRedirectResult().then(result => {
-      if(result.credential) {
-        const token = result.credential.accessToken;
-      }
-      const user = result.user;
-      const userName = user.displayName;
-    }).catch(error => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      const email = error.email;
-      console.log(email);
-      const credential = error.credential;
-      console.log(credential);
-    });*/
+    this.props.firebase.auth().signInWithPopup(provider);
   }
 
   signOut() {
