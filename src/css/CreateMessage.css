@@ -1,0 +1,14 @@
+.createMessageField>form>input {
+  height: 50px;
+  width: 90%;
+}
+
+.createMessageField>form>button {
+  height: 50px;
+  width: 9%;
+}
+
+.createMessageField>button {
+  height: 50px;
+  width: 9%;
+}
